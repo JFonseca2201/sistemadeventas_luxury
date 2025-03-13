@@ -9,8 +9,6 @@ $empresa = $_GET['empresa'];
 $email = $_GET['email'];
 $direccion = $_GET['direccion'];
 
-
-
 $sentencia = $pdo->prepare("INSERT INTO tb_proveedores (nombre_proveedor,                                                        
                                                         celular,
                                                         telefono,
@@ -31,7 +29,12 @@ $sentencia->bindParam('telefono', $telefono);
 $sentencia->bindParam('empresa', $empresa);
 $sentencia->bindParam('email', $email);
 $sentencia->bindParam('direccion', $direccion);
-$sentencia->bindParam('fyh_creacion', $fechaHora); 
+$sentencia->bindParam('fyh_creacion', $fechaHora);
+
+try {
+} catch (Error $e) {
+}
+
 
 if ($sentencia->execute()) {
     session_start();
