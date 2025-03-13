@@ -32,7 +32,9 @@ include('../app/controllers/categorias/listado_de_categorias.php');
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Categorias registradas</h3>
@@ -49,6 +51,14 @@ include('../app/controllers/categorias/listado_de_categorias.php');
                             </div>
 
                         </div>
+                        <div class="card-header">
+                            <div class="card-tools">
+                                <a type="button" class="btn btn-success" href="<?php echo $URL ?>/almacen/create.php">
+                                    <i class="fas fa-tasks"></i> &nbsp;&nbsp; Agregar producto
+                                </a>
+                            </div>
+                        </div>
+
 
                         <div class="card-body">
 

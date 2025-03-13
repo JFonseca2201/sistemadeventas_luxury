@@ -38,7 +38,7 @@ if ($sentencia->execute()) {
 
     <script>
         location.href = "<?php echo $URL; ?>/proveedores"
-    </SCript>
+    </script>
 <?php
 } else {
     session_start();
