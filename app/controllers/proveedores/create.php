@@ -31,11 +31,6 @@ $sentencia->bindParam('email', $email);
 $sentencia->bindParam('direccion', $direccion);
 $sentencia->bindParam('fyh_creacion', $fechaHora);
 
-try {
-} catch (Error $e) {
-}
-
-
 if ($sentencia->execute()) {
     session_start();
     $_SESSION['mensaje'] = "Proveedor registrado con éxito!";
@@ -44,7 +39,7 @@ if ($sentencia->execute()) {
 
     <script>
         location.href = "<?php echo $URL; ?>/proveedores"
-    </SCript>
+    </script>
 <?php
 } else {
     session_start();
