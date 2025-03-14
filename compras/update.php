@@ -4,7 +4,7 @@ include('../layout/sesion.php');
 include('../layout/parte1.php');
 include('../app/controllers/almacen/listado_de_productos.php');
 include('../app/controllers/proveedores/listado_de_proveedores.php');
-include('../app/controllers/compras/listado_de_compras.php');
+include('../app/controllers/compras/cargar_compra.php');
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -13,7 +13,7 @@ include('../app/controllers/compras/listado_de_compras.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">REGISTRO DE UNA NUEVA COMPRA</h1>
+                    <h1 class="m-0">ACTUALIZAR COMPRA</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -33,9 +33,9 @@ include('../app/controllers/compras/listado_de_compras.php');
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card  card-primary">
+                            <div class="card  card-success">
                                 <div class="card-header">
-                                    <h3 class="card-title">Ingreso de una compra</h3>
+                                    <h3 class="card-title">Actualizacion de datos</h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                                         </button>
@@ -183,40 +183,39 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                     <div class="row">
 
                                                         <div class="col-md-6">
-                                                            <input type="text" id="id_producto" hidden>
+                                                            <input type="text" value="<?php echo $id_producto ?>" id="id_producto" hidden>
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Codigo: </label>
-
-                                                                <input type="text" name="" id="codigo" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <input type="text" value="<?php echo $codigo ?>" name="" id="codigo" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Categoria: </label>
                                                                 <div style="display: flex;">
-                                                                    <input type="" class="form-control" id="categoria" disabled>
+                                                                    <input type="" value="<?php echo $nombre_categoria ?>" class="form-control" id="categoria" disabled>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Nombre del producto: </label>
-                                                                <input type="text" name="nombre" id="nombre_producto" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <input type="text" value="<?php echo $nombre_producto ?>" name="nombre" id="nombre_producto" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
 
 
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="">Usuario</label>
-                                                                <input type="text" class="form-control" id="usuario_producto" disabled>
+                                                                <label for="">Usuario</label><!--  -->
+                                                                <input type="text" value="<?php echo $nombre_usuario_producto ?>" class="form-control" id="usuario_producto" disabled>
 
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Descripcion del producto: </label>
-                                                                <textarea name="descripcion" id="descripcion_producto" class="form-control" style="height: 60px; width: 100%; resize: none;" disabled></textarea>
+                                                                <textarea name="descripcion" id="descripcion_producto" class="form-control" style="height: 60px; width: 100%; resize: none;" disabled><?php echo $descripcion ?></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4"></div>
@@ -225,37 +224,37 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Stock: </label>
-                                                                <input type="number" name="stock" id="stock" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <input type="number" value="<?php echo $stock ?>" name="stock" id="stock" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Stock minimo: </label>
-                                                                <input type="number" name="stock_minimo" id="stock_minimo" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <input type="number" value="<?php echo $stock_minimo ?>" name="stock_minimo" id="stock_minimo" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Stock maximo: </label>
-                                                                <input type="number" name="stock_maximo" id="stock_maximo" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <input type="number" value="<?php echo $stock_maximo ?>" name="stock_maximo" id="stock_maximo" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Precio compra: </label>
-                                                                <input type="text" name="precio_compra" id="precio_compra" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <input type="text" value="<?php echo $precio_compra_producto ?>" name="precio_compra" id="precio_compra" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Precio venta: </label>
-                                                                <input type="text" name="precio_venta" id="precio_venta" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <input type="text" value="<?php echo $precio_venta_producto ?>" name="precio_venta" id="precio_venta" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Fecha de ingreso: </label>
-                                                                <input type="date" name="fecha_ingreso" id="fecha_ingreso" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <input type="date" value="<?php echo $fecha_ingreso ?>" name="fecha_ingreso" id="fecha_ingreso" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -388,14 +387,14 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                     <form-group>
                                                         <input type="text" id="id_proveedor" hidden>
                                                         <label for="">Nombre del proveedor </label>
-                                                        <input type="text" id="nombre_proveedor" class="form-control" disabled>
+                                                        <input type="text" value="<?php echo $nombre_proveedor ?>" id="nombre_proveedor" class="form-control" disabled>
 
                                                     </form-group>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form-group>
                                                         <label for="">Celular </label>
-                                                        <input type="number" id="celular" class="form-control" disabled>
+                                                        <input type="number" value="<?php echo $celular_proveedor ?>" id="celular" class="form-control" disabled>
 
                                                     </form-group>
                                                 </div>
@@ -403,7 +402,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                 <div class="col-md-4">
                                                     <form-group>
                                                         <label for="">Telefono de la empresa</label>
-                                                        <input type="number" id="telefono" class="form-control" disabled>
+                                                        <input type="number" value="<?php echo $telefono_proveedor ?>" id="telefono" class="form-control" disabled>
                                                     </form-group>
                                                 </div>
 
@@ -412,21 +411,21 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                 <div class="col-md-4">
                                                     <form-group>
                                                         <label for="">Empresa</label>
-                                                        <input type="text" id="empresa" class="form-control" disabled>
+                                                        <input type="text" value="<?php echo $empresa_proveedor ?>" id="empresa" class="form-control" disabled>
 
                                                     </form-group>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form-group>
                                                         <label for="">Email</label>
-                                                        <input type="email" id="email" class="form-control" disabled>
+                                                        <input type="email" value="<?php echo $email_proveedor ?>" id="email" class="form-control" disabled>
 
                                                     </form-group>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form-group>
                                                         <label for="">Direccion</label>
-                                                        <textarea name="" id="direccion" class="form-control" disabled></textarea>
+                                                        <textarea name="" id="direccion" class="form-control" disabled><?php echo $direccion_empresa ?></textarea>
 
                                                     </form-group>
                                                 </div>
@@ -459,41 +458,37 @@ include('../app/controllers/compras/listado_de_compras.php');
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <?php
-                                                $contador_de_compras = 1;
-                                                foreach ($compras_datos as $compras_dato) {
-                                                    $contador_de_compras = $contador_de_compras + 1;
-                                                }
 
                                                 ?>
                                                 <label for="">Numero de compra</label>
-                                                <input type="text" class="form-control" style="text-align: center;" value="<?php echo $contador_de_compras ?>" disabled>
-                                                <input type="text" value="<?php echo $contador_de_compras ?>" hidden id="nro_compra">
+                                                <input type="text" class="form-control" style="text-align: center;" value="<?php echo $nro_compra ?>" disabled>
+                                                <input type="text" value="<?php echo $nro_compra ?>" hidden id="nro_compra">
                                             </div>
                                         </div>
                                         <br>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Fecha de compra</label>
-                                                <input type="date" class="form-control" id="fecha_compra">
+                                                <label for="">Fecha de compra</label><!-- date('Y-m-d',) -->
+                                                <input type="date" value="<?php echo $fecha_compra ?>" class="form-control" id="fecha_compra">
                                             </div>
                                         </div>
                                         <br>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="">Comprobante de compra</label>
-                                                <input type="text" class="form-control" id="comprobante">
+                                                <input type="text" value="<?php echo $comprobante ?>" class="form-control" id="comprobante">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Precio compra</label>
-                                                <input type="text" class="form-control" id="precio_compra_controlador">
+                                                <label for="">Precio de la compra total</label>
+                                                <input type="text" value="<?php echo $precio_compra ?>" class="form-control" id="precio_compra_controlador">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="">Stock actual</label>
-                                                <input type="text" id="stock_actual" class="form-control" disabled>
+                                                <input type="text" value="<?php echo $stock  ?>" id="stock_actual" class="form-control" disabled>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -505,24 +500,26 @@ include('../app/controllers/compras/listado_de_compras.php');
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="">Cantidad de la compra</label>
-                                                <input type="number" id="cantidad_compra" class="form-control">
+                                                <input type="number" value="<?php echo $cantidad ?>" id="cantidad_compra" class="form-control">
                                             </div>
                                             <script>
                                                 $("#cantidad_compra").keyup(function() {
+                                                    sumacantidades();
+                                                });
+                                                sumacantidades();
 
+                                                function sumacantidades() {
                                                     var stock_actual = $('#stock_actual').val();
                                                     var stcok_compra = $('#cantidad_compra').val();
                                                     var total = parseInt(stock_actual) + parseInt(stcok_compra);
                                                     $('#stock_total').val(total)
-
-
-                                                });
+                                                }
                                             </script>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="">Usuario</label>
-                                                <input type="text" class="form-control" value="<?php echo $email_sesion ?>" disabled>
+                                                <input type="text" class="form-control" value="<?php echo $nombre_usuario_producto ?>" disabled>
                                             </div>
                                         </div>
 
@@ -531,11 +528,13 @@ include('../app/controllers/compras/listado_de_compras.php');
                                     <hr>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <button class="btn btn-block btn-primary" id="btn_guardar_compra">Guardar compra </button>
+                                            <button class="btn btn-success" id="btn_actulaizarar_compra">Actualizar compra </button>
+                                            <a href="<?= $URL ?>/compras" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                     <script>
-                                        $('#btn_guardar_compra').click(function() {
+                                        $('#btn_actulaizarar_compra').click(function() {
+                                            var id_compra = "<?= $id_compra_get ?>";
                                             var id_producto = $("#id_producto").val();
                                             var nro_compra = $("#nro_compra").val();
                                             var fecha_compra = $("#fecha_compra").val();
@@ -563,8 +562,9 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                 $("#cantidad_compra").focus();
                                                 alert('Se debe llenar todos los campos');
                                             } else {
-                                                var url = "../app/controllers/compras/create.php";
+                                                var url = "../app/controllers/compras/update.php";
                                                 $.get(url, {
+                                                    id_compra: id_compra,
                                                     id_producto: id_producto,
                                                     nro_compra: nro_compra,
                                                     fecha_compra: fecha_compra,
@@ -575,7 +575,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                                                     stock_total: stock_total,
                                                     cantidad_compra: cantidad_compra
                                                 }, function(datos) {
-                                                    $('#respuesta_create').html(datos);
+                                                    $('#respuesta_upate').html(datos);
                                                 });
                                             }
                                         });
@@ -585,7 +585,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                             </div>
                             <!-- /.card -->
                         </div>
-                        <div id="respuesta_create"></div>
+                        <div id="respuesta_upate">asdf</div>
                     </div>
 
 
@@ -642,7 +642,7 @@ include('../app/controllers/compras/listado_de_compras.php');
 <script>
     $(function() {
         $("#example2").DataTable({
-            "pageLength": 5,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_  PROVEESORES",

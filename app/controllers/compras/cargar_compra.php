@@ -1,12 +1,12 @@
 <?php
 /* Vista de compras */
 $id_compra_get = $_GET['id'];
-$sql_compras = "SELECT *, 
+$sql_compras = "SELECT *, co.precio_compra as precio_compra,
                         pro.codigo as codigo, pro.nombre as nombre_producto, pro.descripcion as descripcion, pro.stock as stock, pro.stock_minimo as stock_minimo,
                         pro.stock_maximo as stock_maximo, pro.precio_compra as precio_compra_producto, pro.precio_venta as precio_venta_producto, pro.fecha_ingreso as fecha_ingreso, pro.imagen as imagen,
                         cat.nombre_categoria as nombre_categoria,
                         us.nombres as nombre_usuario_producto,
-                        prov.nombre_proveedor as nombre_proveedor, prov.celular as celular_proveedor, prov.telefono as telefono_proveedor, prov.empresa as empresa, prov.email as email_proveedor, prov.direccion as direccion_empresa, us.nombres as nombre_usuario
+                        prov.nombre_proveedor as nombre_proveedor, prov.celular as celular_proveedor, prov.telefono as telefono_proveedor, prov.empresa as empresa_proveedor, prov.email as email_proveedor, prov.direccion as direccion_empresa, us.nombres as nombre_usuario
                 FROM tb_compras as co   INNER JOIN tb_almacen as pro ON co.id_producto = pro.id_producto  
                                         INNER JOIN tb_categoria as cat ON cat.id_categoria = pro.id_categoria 
                                         INNER JOIN tb_usuarios as us ON us.id_usuario = co.id_usuario
@@ -17,6 +17,7 @@ $query_compras->execute();
 $compras_datos = $query_compras->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($compras_datos as $compras_dato) {
+    $id_compra = $compras_dato['id_compra'];
     $nro_compra = $compras_dato['nro_compra'];
     $codigo = $compras_dato['codigo'];
     $nombre_categoria = $compras_dato['nombre_categoria'];
@@ -34,10 +35,10 @@ foreach ($compras_datos as $compras_dato) {
     $nombre_proveedor = $compras_dato['nombre_proveedor'];
     $celular_proveedor = $compras_dato['celular_proveedor'];
     $telefono_proveedor = $compras_dato['telefono_proveedor'];
-    $empresa = $compras_dato['empresa'];
+    $empresa_proveedor = $compras_dato['empresa_proveedor'];
     $email_proveedor = $compras_dato['email_proveedor'];
     $direccion_empresa = $compras_dato['direccion_empresa'];
-    /* Compra0000000000000000 */
+    /* Compra */
     $fecha_compra = $compras_dato['fecha_compra'];
     $comprobante = $compras_dato['comprobante'];
     $precio_compra = $compras_dato['precio_compra'];

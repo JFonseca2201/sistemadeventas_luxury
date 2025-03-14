@@ -129,8 +129,8 @@ include('../app/controllers/compras/cargar_compra.php');
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label for="" class="form-label">Fecha de ingreso: </label>
-                                                                <input type="date" name="fecha_ingreso" value="<?php echo $fecha_ingreso ?>" id="fecha_ingreso" class="form-control" placeholder="" aria-describedby="helpId" disabled />
+                                                                <label for="" class="form-label">Fecha de ingreso: <?php echo $fecha_ingreso ?></label>
+                                                                <input type="text" value="<?php echo $fecha_ingreso ?>" name="fecha_ingreso" id="fecha_ingreso" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -187,7 +187,7 @@ include('../app/controllers/compras/cargar_compra.php');
                                                 <div class="col-md-4">
                                                     <form-group>
                                                         <label for="">Empresa</label>
-                                                        <input type="text" value="<?php echo $empresa ?>" id="empresa" class="form-control" disabled>
+                                                        <input type="text" value="<?php echo $empresa_proveedor ?>" id="empresa" class="form-control" disabled>
 
                                                     </form-group>
                                                 </div>

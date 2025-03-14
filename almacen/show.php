@@ -174,5 +174,3 @@ include('../app/controllers/almacen/cargar_producto.php');
 <!-- /.control-sidebar -->
 <?php include('../layout/mensajes.php'); ?>
 <?php include('../layout/parte2.php'); ?>
-
-

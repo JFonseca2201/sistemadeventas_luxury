@@ -305,7 +305,7 @@ include('../app/controllers/compras/listado_de_compras.php');
 <script>
     $(function() {
         $("#example1").DataTable({
-            "pageLength": 5,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_  compras",
