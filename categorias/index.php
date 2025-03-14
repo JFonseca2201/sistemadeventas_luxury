@@ -89,7 +89,7 @@ include('../app/controllers/categorias/listado_de_categorias.php');
                                                         </button>
                                                         <!-- Actualizar categorias -->
                                                         <div class="modal fade" id="modal-update<?php echo $id_categoria ?>">
-                                                            <div class="modal-dialog">
+                                                            <div class="modal-dialog modal-dialog-centered">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header bg-success">
                                                                         <h4 class="modal-title">Actualizar categoria</h4>
@@ -233,7 +233,7 @@ include('../app/controllers/categorias/listado_de_categorias.php');
 
 <!-- Modal categorias -->
 <div class="modal fade" id="modal-create">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h4 class="modal-title">Agregar categoria</h4>
