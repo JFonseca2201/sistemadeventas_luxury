@@ -13,15 +13,17 @@ $stock_total = $_GET['stock_total'];
 
 $pdo->beginTransaction();
 
-$sentencia = $pdo->prepare("UPDATE tb_compras SET (id_producto=:id_producto, 
-nro_compra=:nro_compra, 
-fecha_compra=:fecha_compra,
-id_proveedor=:id_proveedor,
-comprobante=:comprobante,  
-id_usuario=:id_usuario, 
-precio_compra=:precio_compra_controlador, 
-cantidad=:cantidad,  
-fyh_actualizacion=:fyh_actualizacion) WHERE id_compra=2");
+$sentencia = $pdo->prepare("UPDATE tb_compras 
+SET id_producto=:id_producto,
+    nro_compra=:nro_compra, 
+    fecha_compra=:fecha_compra,
+    id_proveedor=:id_proveedor,
+    comprobante=:comprobante,  
+    id_usuario=:id_usuario, 
+    precio_compra=:precio_compra_controlador, 
+    cantidad=:cantidad,  
+    fyh_actualizacion=:fyh_actualizacion 
+WHERE id_compra=:id_compra");
 
 $sentencia->bindParam('id_compra', $id_compra);
 $sentencia->bindParam('id_producto', $id_producto);
@@ -31,8 +33,9 @@ $sentencia->bindParam('id_proveedor', $id_proveedor);
 $sentencia->bindParam('comprobante', $comprobante);
 $sentencia->bindParam('id_usuario', $id_usuario);
 $sentencia->bindParam('precio_compra_controlador', $precio_compra_controlador);
-$sentencia->bindParam('cantidad_compra', $cantidad_compra);
+$sentencia->bindParam('cantidad', $cantidad_compra);
 $sentencia->bindParam('fyh_actualizacion', $fechaHora);
+
 
 if ($sentencia->execute()) {
 
