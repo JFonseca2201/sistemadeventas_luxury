@@ -21,7 +21,8 @@ comprobante=:comprobante,
 id_usuario=:id_usuario, 
 precio_compra=:precio_compra_controlador, 
 cantidad=:cantidad,  
-fyh_actualizacion=:fyh_actualizacion) WHERE id_compra=:id_compra");
+fyh_actualizacion=:fyh_actualizacion) WHERE id_compra=2");
+
 $sentencia->bindParam('id_compra', $id_compra);
 $sentencia->bindParam('id_producto', $id_producto);
 $sentencia->bindParam('nro_compra', $nro_compra);

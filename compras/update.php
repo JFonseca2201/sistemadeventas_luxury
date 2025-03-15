@@ -426,7 +426,6 @@ include('../app/controllers/compras/cargar_compra.php');
                                                     <form-group>
                                                         <label for="">Direccion</label>
                                                         <textarea name="" id="direccion" class="form-control" disabled><?php echo $direccion_empresa ?></textarea>
-
                                                     </form-group>
                                                 </div>
                                             </div>
@@ -460,7 +459,7 @@ include('../app/controllers/compras/cargar_compra.php');
                                                 <?php
 
                                                 ?>
-                                                <label for="">Numero de compra</label>
+                                                <label for="">Número de compra</label>
                                                 <input type="text" class="form-control" style="text-align: center;" value="<?php echo $nro_compra ?>" disabled>
                                                 <input type="text" value="<?php echo $nro_compra ?>" hidden id="nro_compra">
                                             </div>
@@ -534,7 +533,7 @@ include('../app/controllers/compras/cargar_compra.php');
                                     </div>
                                     <script>
                                         $('#btn_actulaizarar_compra').click(function() {
-                                            var id_compra = "<?= $id_compra_get ?>";
+                                            var id_compra = "<?= $id_compra ?>";
                                             var id_producto = $("#id_producto").val();
                                             var nro_compra = $("#nro_compra").val();
                                             var fecha_compra = $("#fecha_compra").val();
