@@ -18,6 +18,9 @@ $compras_datos = $query_compras->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($compras_datos as $compras_dato) {
     $id_compra = $compras_dato['id_compra'];
+    //id_proveedor
+    $id_proveedor = $compras_dato['id_proveedor'];
+    $id_producto = $compras_dato['id_producto'];
     $nro_compra = $compras_dato['nro_compra'];
     $codigo = $compras_dato['codigo'];
     $nombre_categoria = $compras_dato['nombre_categoria'];
