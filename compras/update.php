@@ -375,10 +375,9 @@ include('../app/controllers/compras/cargar_compra.php');
                                                 <!-- /.modal-dialog -->
                                             </div>
                                             <!-- /.modal -->
-
                                         </div>
-
                                     </div>
+
                                     <hr>
                                     <div class="row">
                                         <div class="col-md-12">
