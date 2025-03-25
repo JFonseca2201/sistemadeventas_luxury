@@ -423,7 +423,7 @@ include('../app/controllers/compras/cargar_compra.php');
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form-group>
-                                                        <label for="">Direccion</label>
+                                                        <label for="">Dirección</label>
                                                         <textarea name="" id="direccion" class="form-control" disabled><?php echo $direccion_empresa ?></textarea>
                                                     </form-group>
                                                 </div>
@@ -439,15 +439,15 @@ include('../app/controllers/compras/cargar_compra.php');
                 <div class="col-md-3">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-outline card-primary">
+                            <div class="card  card-success">
                                 <div class="card-header">
-                                    <h3 class="card-title">Detalle de la compra</h3>
+                                    <h3 class="card-title">Detalles de la compra</h3>
 
-                                    <div class="card-tools">
+                                    <!-- <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
                                         </button>
-                                    </div>
+                                    </div> -->
                                     <!-- /.card-tools -->
                                 </div>
                                 <!-- /.card-header -->
@@ -526,8 +526,8 @@ include('../app/controllers/compras/cargar_compra.php');
                                     <hr>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <button class="btn btn-success" id="btn_actulaizarar_compra">Actualizar compra </button>
-                                            <a href="<?= $URL ?>/compras" class="btn btn-danger">Cancelar</a>
+                                            <button class="btn btn-success" id="btn_actulaizarar_compra"><i class="fa fa-wrench" aria-hidden="true"></i> Actualizar compra </button>
+                                            <a href="<?= $URL ?>/compras" class="btn btn-secondary"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                         </div>
                                     </div>
                                     <script>
@@ -583,7 +583,7 @@ include('../app/controllers/compras/cargar_compra.php');
                             </div>
                             <!-- /.card -->
                         </div>
-                        <div id="respuesta_upate">asdf</div>
+                        <div id="respuesta_upate"></div>
                     </div>
 
 

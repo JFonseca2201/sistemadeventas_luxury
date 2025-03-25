@@ -13,7 +13,7 @@ include('../app/controllers/compras/cargar_compra.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Detalle de compra</h1>
+                    <h1 class="m-0">Compra nro <?php echo $compras_dato['nro_compra'] ?></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -33,21 +33,22 @@ include('../app/controllers/compras/cargar_compra.php');
                 <div class="col-md-9">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card  card-info">
+                            <div class="card  card-danger">
                                 <div class="card-header">
-                                    <h3 class="card-title">Compra # <?php echo $compras_dato['nro_compra'] ?></h3>
+                                    <h3 class="card-title">Está seguro que desea eliminar esta compra? </h3>
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                                         </button>
                                     </div>
                                 </div>
+
                                 <div class="card-body" style="display: block;">
-
-
-
-
-
-
+                                    <div class="card card-info">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Detalles del producto. </h3>
+                                        </div>
+                                    </div>
+                                    <!-- PRODUCTO -->
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
@@ -144,13 +145,17 @@ include('../app/controllers/compras/cargar_compra.php');
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr>
-                                            <div class="" style="display: flex;">
-                                                <h5>Proveedor</h5>
-                                            </div>
+
                                         </div>
                                     </div>
-                                    <hr>
+                                    <!-- <hr> -->
+                                    <!-- PROVEEDOR -->
+                                    <div class="card  card-info">
+                                        <div class="card-header card-blue">
+                                            <h3 class="card-title">Detalles de proveedor. </h3>
+                                        </div>
+                                    </div>
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
@@ -212,9 +217,9 @@ include('../app/controllers/compras/cargar_compra.php');
                 <div class="col-md-3">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-outline card-primary">
+                            <div class="card card-danger ">
                                 <div class="card-header">
-                                    <h3 class="card-title">Compra <?php echo $compras_dato['nro_compra'] ?></h3>
+                                    <h3 class="card-title">Detalle de Compra</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -231,7 +236,7 @@ include('../app/controllers/compras/cargar_compra.php');
 
                                                 <label for="">Numero de compra</label>
                                                 <input type="text" class="form-control" style="text-align: center;" value="<?php echo $compras_dato['nro_compra'] ?>" disabled>
-                                                <input type="text" value="<?php echo $compras_dato['nro_compra'] ?>" hidden id="nro_compra">
+                                                <input type="text" value="<?php echo $id_compra_get ?>" hidden id="nro_compra">
                                             </div>
                                         </div>
                                         <br>
@@ -274,11 +279,15 @@ include('../app/controllers/compras/cargar_compra.php');
                                                 <input type="text" class="form-control" value="<?php echo $email_sesion ?>" disabled>
                                             </div>
                                         </div>
+
+
                                     </div>
                                     <hr>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <a href="<?php echo $URL . '/compras' ?>" class="btn btn-block btn-primary" id="">Listado de compras </a>
+
+                                            <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+                                            <a href="<?php echo $URL . '/compras' ?>" class="btn btn-secondary" id=""><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                         </div>
                                     </div>
 
