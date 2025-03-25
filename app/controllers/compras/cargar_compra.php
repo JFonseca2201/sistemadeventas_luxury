@@ -19,7 +19,7 @@ $compras_datos = $query_compras->fetchAll(PDO::FETCH_ASSOC);
 foreach ($compras_datos as $compras_dato) {
     $id_compra = $compras_dato['id_compra'];
     //id_proveedor
-    $id_proveedor = $compras_dato['id_proveedor'];
+    $id_proveedor_tabla = $compras_dato['id_proveedor'];
     $id_producto = $compras_dato['id_producto'];
     $nro_compra = $compras_dato['nro_compra'];
     $codigo = $compras_dato['codigo'];
@@ -35,7 +35,7 @@ foreach ($compras_datos as $compras_dato) {
     $fecha_ingreso = $compras_dato['fecha_ingreso'];
     $imagen = $compras_dato['imagen'];
     /* Proveedor */
-    $nombre_proveedor = $compras_dato['nombre_proveedor'];
+    $nombre_proveedor_tabla = $compras_dato['nombre_proveedor'];
     $celular_proveedor = $compras_dato['celular_proveedor'];
     $telefono_proveedor = $compras_dato['telefono_proveedor'];
     $empresa_proveedor = $compras_dato['empresa_proveedor'];

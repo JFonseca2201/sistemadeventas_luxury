@@ -384,9 +384,9 @@ include('../app/controllers/compras/cargar_compra.php');
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <form-group>
-                                                        <input type="text" value="<?php echo $id_proveedor ?>" id="id_proveedor" hidden>
-                                                        <label for="">Nombre del proveedor </label>
-                                                        <input type="text" value="<?php echo $nombre_proveedor ?>" id="nombre_proveedor" class="form-control" disabled>
+                                                        <input type="text" value="<?php echo $id_proveedor_tabla ?>" id="id_proveedor" hidden>
+                                                        <label for="">Proveedor </label>
+                                                        <input type="text" value="<?php echo $nombre_proveedor_tabla ?>" id="nombre_proveedor" class="form-control" disabled>
 
                                                     </form-group>
                                                 </div>

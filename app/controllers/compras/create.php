@@ -13,7 +13,7 @@ $stock_total = $_GET['stock_total'];
 
 $pdo->beginTransaction();
 
-$sentencia = $pdo->prepare("INSERT INTO tb_compras (id_producto, nro_compra, fecha_compra,id_proveedor,comprobante,  id_usuario, precio_compra, cantidad,  fyh_creacion) 
+$sentencia = $pdo->prepare("INSERT INTO tb_compras (id_producto, nro_compra, fecha_compra, id_proveedor, comprobante, id_usuario, precio_compra, cantidad,  fyh_creacion) 
                                     VALUES (:id_producto, :nro_compra, :fecha_compra, :id_proveedor, :comprobante, :id_usuario, :precio_compra_controlador, :cantidad_compra, :fyh_creacion)");
 $sentencia->bindParam('id_producto', $id_producto);
 $sentencia->bindParam('nro_compra', $nro_compra);
@@ -24,10 +24,6 @@ $sentencia->bindParam('id_usuario', $id_usuario);
 $sentencia->bindParam('precio_compra_controlador', $precio_compra_controlador);
 $sentencia->bindParam('cantidad_compra', $cantidad_compra);
 $sentencia->bindParam('fyh_creacion', $fechaHora);
-
-
-
-
 
 if ($sentencia->execute()) {
 

@@ -10,7 +10,7 @@ $sql_compras = "SELECT *, co.precio_compra as precio_compra,
                 FROM tb_compras as co   INNER JOIN tb_almacen as pro ON co.id_producto = pro.id_producto  
                                         INNER JOIN tb_categoria as cat ON cat.id_categoria = pro.id_categoria 
                                         INNER JOIN tb_usuarios as us ON us.id_usuario = co.id_usuario
-                                        INNER JOIN tb_proveedores as prov ON co.id_proveedor = prov.id_proveedor";
+                                        INNER JOIN tb_proveedores as prov ON co.id_proveedor = prov.id_proveedor ORDER BY id_compra ASC;";
 $query_compras = $pdo->prepare($sql_compras);
 $query_compras->execute();
 

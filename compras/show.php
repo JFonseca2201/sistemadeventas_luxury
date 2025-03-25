@@ -129,7 +129,7 @@ include('../app/controllers/compras/cargar_compra.php');
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="mb-3">
-                                                                <label for="" class="form-label">Fecha de ingreso: <?php echo $fecha_ingreso ?></label>
+                                                                <label for="" class="form-label">Fecha de ingreso: <!-- <?php echo $fecha_ingreso ?> --></label>
                                                                 <input type="text" value="<?php echo $fecha_ingreso ?>" name="fecha_ingreso" id="fecha_ingreso" class="form-control" placeholder="" aria-describedby="helpId" disabled />
                                                             </div>
                                                         </div>
@@ -146,14 +146,9 @@ include('../app/controllers/compras/cargar_compra.php');
                                             </div>
                                             <hr>
                                             <div class="" style="display: flex;">
-
                                                 <h5>Proveedor</h5>
-
                                             </div>
-
-
                                         </div>
-
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -163,7 +158,7 @@ include('../app/controllers/compras/cargar_compra.php');
                                                     <form-group>
                                                         <input type="text" id="id_proveedor" hidden>
                                                         <label for="">Nombre del proveedor </label>
-                                                        <input type="text" value="<?php echo $nombre_proveedor ?>" id="nombre_proveedor" class="form-control" disabled>
+                                                        <input type="text" value="<?php echo $nombre_proveedor_tabla ?>" id="nombre_proveedor" class="form-control" disabled>
 
                                                     </form-group>
                                                 </div>

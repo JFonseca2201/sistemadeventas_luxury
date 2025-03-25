@@ -49,7 +49,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                                 <thead>
                                     <tr>
                                         <th>Nro.</th>
-                                        <th>No. Compra</th>
+                                        <!-- <th>No. Compra</th> -->
                                         <th>Producto</th>
                                         <th>Fecha de compra</th>
                                         <th>Proveedor</th>
@@ -69,7 +69,7 @@ include('../app/controllers/compras/listado_de_compras.php');
                                     ?>
                                         <tr>
                                             <td><?php echo $contador = $contador + 1; ?></td>
-                                            <td><?php echo $compras_dato['nro_compra'] ?></td>
+                                            <!-- <td><?php echo $compras_dato['nro_compra'] ?></td> -->
                                             <td>
                                                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-producto<?php echo $id_compra ?>">
                                                     <!-- <i class="fas fa-pencil-alt"></i> --> <?php echo $compras_dato['nombre_producto'] ?>
