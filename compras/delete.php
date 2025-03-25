@@ -56,7 +56,7 @@ include('../app/controllers/compras/cargar_compra.php');
                                                     <div class="row">
 
                                                         <div class="col-md-6">
-                                                            <input type="text" id="id_producto" hidden>
+                                                            <input type="text" value="<?php echo $id_producto ?>" id="id_producto" hidden>
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Codigo: </label>
 
@@ -286,10 +286,52 @@ include('../app/controllers/compras/cargar_compra.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
 
-                                            <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</button>
+                                            <button type="button" class="btn btn-danger" id="btn_eliminar"><i class="fa fa-trash"></i> Eliminar</button>
                                             <a href="<?php echo $URL . '/compras' ?>" class="btn btn-secondary" id=""><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                                         </div>
                                     </div>
+                                    <div class="" id="respuesta_delete"></div>
+                                    <!-- ************************************************************************ -->
+                                    <script lang="ts">
+                                        $('#btn_eliminar').click(function() {
+                                            var id_compra = '<?php echo $id_compra_get ?>';
+                                            var id_producto = $('#id_producto').val();
+                                            var cantidad_compra = '<?php echo $cantidad ?>';
+                                            var stock_actual = '<?php echo $stock ?>';
+
+                                            Swal.fire({
+                                                title: "Desea eliminar esta compra?",
+                                                icon: "question",
+                                                showCancelButton: true,
+                                                confirmButtonColor: "#3085d6",
+                                                cancelButtonColor: "#d33",
+                                                confirmButtonText: "Si, borrar esta compra!"
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    Swal.fire(
+                                                        eliminar(),
+                                                        'Compra eliminada',
+                                                        'success'
+                                                    );
+                                                }
+                                            });
+
+                                            function eliminar() {
+                                                var url = "../app/controllers/compras/delete.php";
+
+                                                $.get(url, {
+                                                    id_compra: id_compra,
+                                                    id_producto: id_producto,
+                                                    cantidad_compra: cantidad_compra,
+                                                    stock_actual: stock_actual
+                                                }, function(datos) {
+                                                    $('#respuesta_delete').html(datos)
+                                                });
+                                            }
+
+                                        });
+                                    </script>
+                                    <!-- ************************************************************************ -->
 
                                 </div>
                                 <!-- /.card-body -->
