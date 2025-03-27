@@ -59,7 +59,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index.php" class="brand-link">
+            <a href="<?php echo $URL ?>" class="brand-link">
                 <img src="<?php echo $URL ?>/public/images/logo.jpeg" alt="LE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">LUXURY EVYS</span>
             </a>
@@ -176,6 +176,7 @@
                             </ul>
                         </li>
                         <!-- FIN ALMACEN -->
+
                         <!-- COMPRAS -->
                         <li class="nav-item">
                             <a href="#" class="nav-link ">
@@ -201,6 +202,7 @@
                             </ul>
                         </li>
                         <!-- FIN COMPRAS -->
+
                         <!-- PROVEEDORES -->
                         <li class="nav-item">
                             <a href="#" class="nav-link ">
@@ -221,6 +223,32 @@
                             </ul>
                         </li>
                         <!-- FIN PROVEEDORES -->
+
+                        <!-- VENTAS -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-shopping-basket"></i>
+                                <p>
+                                    Ventas
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?php echo $URL ?>/ventas/index.php" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Listado de ventas</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo $URL ?>/ventas/create.php" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Creación de venta</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- FIN VENTAS -->
                         <li>
                             <hr class="dropdown-divider">
                         </li>

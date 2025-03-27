@@ -7,6 +7,7 @@ include('app/controllers/roles/listado_de_roles.php');
 include('app/controllers/categorias/listado_de_categorias.php');
 include('app/controllers/almacen/listado_de_productos.php');
 include('app/controllers/proveedores/listado_de_proveedores.php');
+include('app/controllers/compras/listado_de_compras.php');
 
 
 ?>
@@ -129,7 +130,7 @@ include('app/controllers/proveedores/listado_de_proveedores.php');
                         </a>
                     </div>
                 </div>
-                <!--  -->
+                <!-- listado de proveedores  -->
                 <div class="col-lg-3 col-6">
 
                     <div class="small-box bg-dark">
@@ -150,6 +151,56 @@ include('app/controllers/proveedores/listado_de_proveedores.php');
                         </a>
                         <a href="<?php echo $URL ?>/proveedores" class="small-box-footer">
                             Mas detalle <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- listado de compras -->
+                <div class="col-lg-3 col-6">
+
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <?php
+                            $cont_compras = 0;
+                            foreach ($compras_datos as $compras_dato) {
+                                $cont_compras = $cont_compras + 1;
+                            }
+                            ?>
+                            <h3><?php echo $cont_compras ?></h3>
+                            <p>Compras registradas</p>
+                        </div>
+                        <a href="<?php echo $URL ?>/compras">
+                            <div class="icon">
+                                <i class="fas fa-cart-plus"></i>
+                            </div>
+                        </a>
+                        <a href="<?php echo $URL ?>/compras" class="small-box-footer">
+                            Más detalle <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- listado de ventas -->
+                <div class="col-lg-3 col-6">
+
+                    <div class="small-box bg-secondary">
+                        <div class="inner">
+                            <?php
+                            $cont_compras = 0;
+                            foreach ($compras_datos as $compras_dato) {
+                                $cont_compras = $cont_compras + 1;
+                            }
+                            ?>
+                            <h3><?php echo $cont_compras ?></h3>
+                            <p>Ventas registradas</p>
+                        </div>
+                        <a href="<?php echo $URL ?>/compras">
+                            <div class="icon">
+                                <i class="fas fa-shopping-basket"></i>
+                            </div>
+                        </a>
+                        <a href="<?php echo $URL ?>/compras" class="small-box-footer">
+                            Más detalle <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
                 </div>
