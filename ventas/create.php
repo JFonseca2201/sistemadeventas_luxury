@@ -4,6 +4,8 @@ include('../layout/sesion.php');
 include('../layout/parte1.php');
 include('../app/controllers/almacen/listado_de_productos.php');
 include('../app/controllers/ventas/listado_de_ventas.php');
+include('../app/controllers/clientes/listado_clientes.php');
+/* C:\xampp\htdocs\www.sistemadeventas.com\app\controllers\clientes\listado_clientes.php */
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -39,28 +41,26 @@ include('../app/controllers/ventas/listado_de_ventas.php');
                                 $cont_ventas = $cont_ventas + 1;
                             }
                             ?>
-                            <h3 class="card-title">
-                                <div class="form-group">
-                                    <i class="fa fa-shopping-bag"></i> Venta Nro <input type="text" class="form-control" value="<?php echo $cont_ventas + 1 ?>" style="text-align: center;" disabled>
-                                </div>
-
-                            </h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                                <h3 class="card-title" style="text-align: center;">
+                                    <div class="contenedor-flexbox">
+                                        <div class="" style="display:inline-block;"><i class="fa fa-shopping-bag"></i> Venta Nro </div>
+                                        <div class="" style="display:inline-block; text-align: center;"><input type="text" class="form-control" value="<?php echo $cont_ventas + 1 ?>" disabled></div>
+                                    </div>
+
+                                </h3>
                             </div>
                             <!-- /.card-tools -->
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                            <div class="" style="display: flex;">
+                            <div class="" style="display: flex; text-align: right; float: right;">
 
                                 <div class="" style="width: 20px;"></div>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-buscar_producto">
-                                    <i class="fas fa-search"></i> Buscar producto
+                                    <i class="fas fa-plus"></i> Agregar producto
                                 </button>
                             </div>
                             <!-- Visualizar prodcuto -->
@@ -79,7 +79,7 @@ include('../app/controllers/ventas/listado_de_ventas.php');
                                                     <thead>
                                                         <tr>
                                                             <th>Código</th>
-                                                            <th>Seleccionar</th>
+                                                            <th>Selec.</th>
                                                             <th>Imagen</th>
                                                             <th>Nombre</th>
                                                             <th>P.V.P</th>
@@ -94,9 +94,11 @@ include('../app/controllers/ventas/listado_de_ventas.php');
                                                             <tr>
                                                                 <td><?php echo $productos_dato['codigo'] ?></td>
                                                                 <td>
-                                                                    <button class="btn btn-info" id="btn_seleccionar<?php echo $id_producto ?>">
-                                                                        <i class="fa fa-check"></i>
-                                                                    </button>
+                                                                    <center>
+                                                                        <button class="btn btn-info" id="btn_seleccionar<?php echo $id_producto ?>">
+                                                                            <i class="fa fa-check"></i>
+                                                                        </button>
+                                                                    </center>
                                                                     <script>
                                                                         $('#btn_seleccionar<?php echo $id_producto ?>').click(function() {
 
@@ -160,7 +162,7 @@ include('../app/controllers/ventas/listado_de_ventas.php');
                                                     </div>
                                                 </div>
                                                 <hr>
-                                                <button style="float: right;" class="btn btn-primary" id="btn_registrar_carrito">Agregar</button>
+                                                <button style="float: right;" class="btn btn-primary" id="btn_registrar_carrito"> <i class="fas fa-plus"></i> Agregar</button>
                                                 <div class="" id="respuesta_carrito"></div>
                                                 <script>
                                                     $('#btn_registrar_carrito').click(function() {
@@ -191,13 +193,8 @@ include('../app/controllers/ventas/listado_de_ventas.php');
                                                 </script>
                                                 <br><br>
                                             </div>
-
-
-
                                         </div>
-                                        <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Listo</button>
-    </div> -->
+
                                     </div>
                                     <!-- /.modal-content -->
                                 </div>
@@ -261,7 +258,7 @@ include('../app/controllers/ventas/listado_de_ventas.php');
                                                     <center>
                                                         <form action="../app/controllers/ventas/borrar_carrito.php" method="post">
                                                             <input type="text" name="id_carrito" value="<?php echo $id_carrito ?>" hidden>
-                                                            <button type="button" class="btn btn-danger"> <i class="fa fa-trash"></i></button>
+                                                            <button type="submit" class="btn btn-danger"> <i class="fa fa-trash"></i></button>
                                                         </form>
                                                     </center>
                                                 </td>
@@ -274,8 +271,8 @@ include('../app/controllers/ventas/listado_de_ventas.php');
                                         <tr>
                                             <th colspan="3" style="background-color:rgb(240, 240, 240); text-align: right;">Total: </th>
                                             <th><?php echo $cantidad_total ?></th>
-                                            <th>$<?php echo $precio_unitario_total ?></th>
-                                            <th style="background-color:rgb(0, 30, 58); text-align: right; color:rgb(255, 255, 255); font-size: larger;">$<?php echo $precio_total ?></th>
+                                            <th>$<?php echo bcdiv($precio_unitario_total, '1', 2); ?></th>
+                                            <th style="background-color:rgb(0, 30, 58); text-align: center; color:rgb(255, 255, 255); font-size: larger;">$<?php echo bcdiv($precio_total, '1', 2); ?></th>
                                         </tr>
                                     </tbody>
 
@@ -301,11 +298,136 @@ include('../app/controllers/ventas/listado_de_ventas.php');
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            asd
+                            <div class="" style="display: flex; text-align: right; float: right;">
+
+                                <div class="" style="width: 20px;"></div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-buscar_cliente">
+                                    <i class="fas fa-plus"></i> Buscar cliente
+                                </button>
+                            </div>
+                            <div id="modal-buscar_cliente" class="modal fade" role="dialog">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary">
+                                            <h4 class="modal-title">Busqueda de Cliente</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="table table-responsive">
+                                                <table id="example2" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Selec.</th>
+                                                            <th>Cliente</th>
+                                                            <th>Cédula/RUC</th>
+                                                            <th>Dirección</th>
+                                                            <th>Teléfono</th>
+                                                            <th>Correo electrónico</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        $cont_cliente = 0;
+                                                        foreach ($clientes_datos as $clientes_dato) {
+                                                            $cont_cliente = $cont_cliente + 1;
+
+                                                            $id_cliente = $clientes_dato['id_cliente'];
+                                                        ?>
+                                                            <tr>
+                                                                <td><?php echo $cont_cliente ?></td>
+                                                                <td>
+
+                                                                    <center>
+                                                                        <button class="btn btn-info" id="btn_pasar_cliente<?php echo $id_cliente ?>">
+                                                                            <i class="fa fa-user-check"></i>
+                                                                        </button>
+                                                                    </center>
+                                                                    <script>
+                                                                        $('#btn_pasar_cliente<?php echo $id_cliente ?>').click(function() {
+
+                                                                            var nit_ci_cliente = '<?php echo $clientes_dato['nit_ci_cliente'] ?>';
+                                                                            $('#nit_ci_cliente').val(nit_ci_cliente);
+
+                                                                            var nombre_cliente = '<?php echo $clientes_dato['nombre_cliente'] ?>';
+                                                                            $('#nombre_cliente').val(nombre_cliente);
+
+                                                                            var direccion_cliente = '<?php echo $clientes_dato['direccion_cliente'] ?>';
+                                                                            $('#direccion_cliente').val(direccion_cliente);
+
+                                                                            var celular_cliente = '<?php echo $clientes_dato['celular_cliente'] ?>';
+                                                                            $('#celular_cliente').val(celular_cliente);
+
+                                                                            var email_cliente = '<?php echo $clientes_dato['email_cliente'] ?>';
+                                                                            $('#email_cliente').val(email_cliente);
+
+
+                                                                            //alert(nombre_cliente);
+                                                                            $('#modal-buscar_cliente').modal('toggle');
+                                                                        });
+                                                                    </script>
+                                                                </td>
+                                                                <td><?php echo $clientes_dato['nit_ci_cliente'] ?></td>
+                                                                <td><?php echo $clientes_dato['nombre_cliente'] ?></td>
+                                                                <td><?php echo $clientes_dato['direccion_cliente'] ?></td>
+                                                                <td><?php echo $clientes_dato['celular_cliente'] ?></td>
+                                                                <td><?php echo $clientes_dato['email_cliente'] ?></td>
+                                                            </tr>
+
+                                                        <?php } ?>
+                                                    </tbody>
+
+                                                </table>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Cédula o RUC cliente</label>
+                                        <input type="text" class="form-control" id="nit_ci_cliente">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Nombre cliente</label>
+                                        <input type="text" class="form-control" id="nombre_cliente">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="">Dirección cliente</label>
+                                        <input type="text" class="form-control" id="direccion_cliente">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Teléfono cliente</label>
+                                        <input type="text" class="form-control" id="celular_cliente">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Correo electrónico cliente</label>
+                                        <input type="text" class="form-control" id="email_cliente">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
                     <!-- ******************CLIENTE**************** -->
                 </div>
 
@@ -334,7 +456,7 @@ include('../app/controllers/ventas/listado_de_ventas.php');
 <script>
     $(function() {
         $("#example1").DataTable({
-            "pageLength": 3,
+            "pageLength": 5,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ a _END_ de _TOTAL_  productos",
@@ -367,12 +489,12 @@ include('../app/controllers/ventas/listado_de_ventas.php');
             "pageLength": 5,
             "language": {
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_  PROVEESORES",
-                "infoEmpty": "Mostrando 0 a 0 de 0  productos",
-                "infoFiltered": "(Filtrado de _MAX_ total  PROVEESORES)",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_  clientes",
+                "infoEmpty": "Mostrando 0 a 0 de 0  clientes",
+                "infoFiltered": "(Filtrado de _MAX_ total  clientes)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_  PROVEESORES",
+                "lengthMenu": "Mostrar _MENU_  clientes",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscar:",
