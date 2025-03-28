@@ -5,6 +5,7 @@ include('../layout/parte1.php');
 include('../app/controllers/almacen/listado_de_productos.php');
 include('../app/controllers/ventas/listado_de_ventas.php');
 include('../app/controllers/clientes/listado_clientes.php');
+
 /* C:\xampp\htdocs\www.sistemadeventas.com\app\controllers\clientes\listado_clientes.php */
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -284,159 +285,276 @@ include('../app/controllers/clientes/listado_clientes.php');
                     </div>
                     <!-- /.card -->
 
-                    <!-- ******************CLIENTE**************** -->
-                    <div class="card card-outline card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-user-check"></i> Datos del cliente </h3>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <!-- ******************CLIENTE**************** -->
+                            <div class="card card-outline card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title"><i class="fa fa-user-check"></i> Datos del cliente </h3>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                            <!-- /.card-tools -->
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="" style="display: flex; text-align: right; float: right;">
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.card-tools -->
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="" style="display: flex; text-align: right; float: right;">
 
-                                <div class="" style="width: 20px;"></div>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-buscar_cliente">
-                                    <i class="fas fa-plus"></i> Buscar cliente
-                                </button>
-                            </div>
-                            <div id="modal-buscar_cliente" class="modal fade" role="dialog">
-                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-primary">
-                                            <h4 class="modal-title">Busqueda de Cliente</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
+                                        <div class="" style="width: 20px;"></div>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-buscar_cliente">
+                                            <i class="fas fa-plus"></i> Buscar cliente
+                                        </button>
+                                    </div>
+                                    <div id="modal-buscar_cliente" class="modal fade" role="dialog">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-primary">
+                                                    <h4 class="modal-title">Busqueda de Cliente</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="table table-responsive">
+                                                        <table id="example2" class="table table-bordered table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Selec.</th>
+                                                                    <th>Cliente</th>
+                                                                    <th>Cédula/RUC</th>
+                                                                    <th>Dirección</th>
+                                                                    <th>Teléfono</th>
+                                                                    <th>Correo electrónico</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $cont_cliente = 0;
+                                                                foreach ($clientes_datos as $clientes_dato) {
+                                                                    $cont_cliente = $cont_cliente + 1;
+
+                                                                    $id_cliente = $clientes_dato['id_cliente'];
+                                                                ?>
+                                                                    <tr>
+                                                                        <td><?php echo $cont_cliente ?></td>
+                                                                        <td>
+
+                                                                            <center>
+                                                                                <button class="btn btn-info" id="btn_pasar_cliente<?php echo $id_cliente ?>">
+                                                                                    <i class="fa fa-user-check"></i>
+                                                                                </button>
+                                                                            </center>
+                                                                            <script>
+                                                                                $('#btn_pasar_cliente<?php echo $id_cliente ?>').click(function() {
+
+                                                                                    var id_cliente = '<?php echo $clientes_dato['id_cliente'] ?>';
+                                                                                    $('#id_cliente').val(id_cliente);
+
+                                                                                    var nit_ci_cliente = '<?php echo $clientes_dato['nit_ci_cliente'] ?>';
+                                                                                    $('#nit_ci_cliente').val(nit_ci_cliente);
+
+                                                                                    var nombre_cliente = '<?php echo $clientes_dato['nombre_cliente'] ?>';
+                                                                                    $('#nombre_cliente').val(nombre_cliente);
+
+                                                                                    var direccion_cliente = '<?php echo $clientes_dato['direccion_cliente'] ?>';
+                                                                                    $('#direccion_cliente').val(direccion_cliente);
+
+                                                                                    var celular_cliente = '<?php echo $clientes_dato['celular_cliente'] ?>';
+                                                                                    $('#celular_cliente').val(celular_cliente);
+
+                                                                                    var email_cliente = '<?php echo $clientes_dato['email_cliente'] ?>';
+                                                                                    $('#email_cliente').val(email_cliente);
+
+
+                                                                                    //alert(nombre_cliente);
+                                                                                    $('#modal-buscar_cliente').modal('toggle');
+                                                                                });
+                                                                            </script>
+                                                                        </td>
+                                                                        <td><?php echo $clientes_dato['nit_ci_cliente'] ?></td>
+                                                                        <td><?php echo $clientes_dato['nombre_cliente'] ?></td>
+                                                                        <td><?php echo $clientes_dato['direccion_cliente'] ?></td>
+                                                                        <td><?php echo $clientes_dato['celular_cliente'] ?></td>
+                                                                        <td><?php echo $clientes_dato['email_cliente'] ?></td>
+                                                                    </tr>
+
+                                                                <?php } ?>
+                                                            </tbody>
+
+                                                        </table>
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="table table-responsive">
-                                                <table id="example2" class="table table-bordered table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Selec.</th>
-                                                            <th>Cliente</th>
-                                                            <th>Cédula/RUC</th>
-                                                            <th>Dirección</th>
-                                                            <th>Teléfono</th>
-                                                            <th>Correo electrónico</th>
+                                    </div>
+                                    <hr>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" id="id_cliente" hidden>
+                                                <label for="">Cédula o RUC cliente</label>
+                                                <input type="text" class="form-control" id="nit_ci_cliente">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">Nombre cliente</label>
+                                                <input type="text" class="form-control" id="nombre_cliente">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="">Dirección cliente</label>
+                                                <input type="text" class="form-control" id="direccion_cliente">
+                                            </div>
+                                        </div>
 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                        $cont_cliente = 0;
-                                                        foreach ($clientes_datos as $clientes_dato) {
-                                                            $cont_cliente = $cont_cliente + 1;
-
-                                                            $id_cliente = $clientes_dato['id_cliente'];
-                                                        ?>
-                                                            <tr>
-                                                                <td><?php echo $cont_cliente ?></td>
-                                                                <td>
-
-                                                                    <center>
-                                                                        <button class="btn btn-info" id="btn_pasar_cliente<?php echo $id_cliente ?>">
-                                                                            <i class="fa fa-user-check"></i>
-                                                                        </button>
-                                                                    </center>
-                                                                    <script>
-                                                                        $('#btn_pasar_cliente<?php echo $id_cliente ?>').click(function() {
-
-                                                                            var nit_ci_cliente = '<?php echo $clientes_dato['nit_ci_cliente'] ?>';
-                                                                            $('#nit_ci_cliente').val(nit_ci_cliente);
-
-                                                                            var nombre_cliente = '<?php echo $clientes_dato['nombre_cliente'] ?>';
-                                                                            $('#nombre_cliente').val(nombre_cliente);
-
-                                                                            var direccion_cliente = '<?php echo $clientes_dato['direccion_cliente'] ?>';
-                                                                            $('#direccion_cliente').val(direccion_cliente);
-
-                                                                            var celular_cliente = '<?php echo $clientes_dato['celular_cliente'] ?>';
-                                                                            $('#celular_cliente').val(celular_cliente);
-
-                                                                            var email_cliente = '<?php echo $clientes_dato['email_cliente'] ?>';
-                                                                            $('#email_cliente').val(email_cliente);
-
-
-                                                                            //alert(nombre_cliente);
-                                                                            $('#modal-buscar_cliente').modal('toggle');
-                                                                        });
-                                                                    </script>
-                                                                </td>
-                                                                <td><?php echo $clientes_dato['nit_ci_cliente'] ?></td>
-                                                                <td><?php echo $clientes_dato['nombre_cliente'] ?></td>
-                                                                <td><?php echo $clientes_dato['direccion_cliente'] ?></td>
-                                                                <td><?php echo $clientes_dato['celular_cliente'] ?></td>
-                                                                <td><?php echo $clientes_dato['email_cliente'] ?></td>
-                                                            </tr>
-
-                                                        <?php } ?>
-                                                    </tbody>
-
-                                                </table>
-                                                <hr>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">Teléfono cliente</label>
+                                                <input type="text" class="form-control" id="celular_cliente">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">Correo electrónico cliente</label>
+                                                <input type="text" class="form-control" id="email_cliente">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <hr>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="">Cédula o RUC cliente</label>
-                                        <input type="text" class="form-control" id="nit_ci_cliente">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="">Nombre cliente</label>
-                                        <input type="text" class="form-control" id="nombre_cliente">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <label for="">Dirección cliente</label>
-                                        <input type="text" class="form-control" id="direccion_cliente">
-                                    </div>
-                                </div>
+                            <!-- ******************CLIENTE**************** -->
+                        </div>
+                        <div class="col-md-5">
+                            <!-- ******************FACTURA**************** -->
+                            <div class="card card-outline card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title"><i class="fa fa-shopping-cart"></i> Registrar venta </h3>
 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="">Teléfono cliente</label>
-                                        <input type="text" class="form-control" id="celular_cliente">
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
                                     </div>
+                                    <!-- /.card-tools -->
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="">Correo electrónico cliente</label>
-                                        <input type="text" class="form-control" id="email_cliente">
+                                <!-- /.card-header -->
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="total_a_cancelar-sp" class="form-label">Monto a cancelar</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="total_a_cancelar-sp">$</span>
+                                                <input type="text" id="total_a_cancelar" style="text-align: center; font-size: xx-large;" class="form-control" value="<?php echo bcdiv($precio_total, '1', 2); ?>" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="basic_addon3s" class="form-label">Descuento</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic_addon3">$</span>
+                                                <input type="text" class="form-control" style="font-size: larger;" id="total_descuento" aria-describedby="basic-addon3" value="0">
+                                            </div>
+                                            <script>
+                                                $('#total_descuento').keyup(function() {
+                                                    var total_a_cancelar = $('#total_a_cancelar').val();
+                                                    var total_descuento = $('#total_descuento').val();
+
+                                                    $('#total_a_cancelar_final').val((parseFloat(total_a_cancelar) - parseFloat(total_descuento)).toFixed(2));
+
+                                                });
+                                            </script>
+                                        </div>
+
                                     </div>
+                                    <div class="row">
+
+                                        <div class="col-md-8">
+                                            <label for="basic-addon_3" class="form-label">TOTAL A CANCELAR</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon_3">$</span>
+                                                <input type="text" id="total_a_cancelar_final" style="text-align: center; font-size: xx-large;" class="form-control" aria-describedby="basic-addon3" value="<?php echo bcdiv($precio_total, '1', 2); ?>" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="basic-addon_3" class="form-label">Pago</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon_3">$</span>
+                                                <input type="text" id="total_pagado" style="text-align: center; font-size: x-large;" class="form-control" aria-describedby="basic-addon3">
+                                                <script>
+                                                    $('#total_pagado').keyup(function() {
+                                                        var total_a_cancelar = $('#total_a_cancelar').val();
+                                                        var total_descuento = 0;
+                                                        total_descuento = $('#total_descuento').val()
+                                                        var total_pagado = $('#total_pagado').val();
+                                                        var cambio = (parseFloat(total_pagado) - parseFloat(total_a_cancelar)) + parseFloat(total_descuento);
+                                                        $('#cambio').val(cambio.toFixed(2));
+                                                    });
+                                                </script>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="basic-addon_3" class="form-label">Cambio</label>
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="basic-addon_3">$</span>
+                                                <input type="text" id="cambio" style="text-align: center; font-size: x-large;" class="form-control" aria-describedby="basic-addon3" disabled>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <button type="button" id="btn_guardar_venta" class="btn btn-primary btn-block">Guardar venta</button>
+                                                <script>
+                                                    $('#btn_guardar_venta').click(function() {
+                                                        var nro_venta = '<?php echo $cont_ventas + 1 ?>';
+                                                        var id_cliente = $('#id_cliente').val();
+                                                        var total_a_cancelar_final = $('#total_a_cancelar_final').val();
+
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4"></div>
+
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                    <!-- ******************CLIENTE**************** -->
                 </div>
+
 
             </div>
 
-
         </div>
 
-    </div><!-- /.container-fluid -->
+
+    </div>
+
+</div><!-- /.container-fluid -->
 </div>
 <!-- /.content -->
 </div>

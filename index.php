@@ -224,3 +224,70 @@ include('app/controllers/compras/listado_de_compras.php');
 <?php
 include('layout/parte2.php');
 ?>
+
+
+<!-- 
+
+<div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+
+                                                <label for=""> Monto a cancelar</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" style="text-align: center; font-size: medium;">$</span>
+                                                    <input type="text" id="total_a_cancelar" aria-label="Amount (to the nearest dollar)" style="text-align: center; font-size: xx-large;" class="form-control" value="<?php echo bcdiv($precio_total, '1', 2); ?>" disabled>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for=""> Descuento</label>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text" style="text-align: center; font-size: medium;">$</span>
+                                                    <input type="text" id="total_descuento" aria-label="Amount (to the nearest dollar)" value="0" style="text-align: center; font-size: large;" class="form-control">
+                                                    <script>
+                                                        $('#total_descuento').keyup(function() {
+                                                            var total_a_cancelar = $('#total_a_cancelar').val();
+                                                            var total_descuento = $('#total_descuento').val();
+                                                            $('#total_a_cancelar_final').val((parseFloat(total_a_cancelar) - parseFloat(total_descuento)).toFixed(2));
+                                                        });
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="">Pago Total</label>
+                                                    <input type="text" id="total_a_cancelar_final" style="text-align: center; font-size: xx-large;" class="form-control" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">Total pagado</label>
+                                                <input type="text" id="total_pagado" style="text-align: center; font-size: x-large; display: inline-block;" class="form-control" placeholder="$0.00">
+                                                <script>
+                                                    $('#total_pagado').keyup(function() {
+                                                        var total_a_cancelar = $('#total_a_cancelar').val();
+                                                        var total_descuento = $('#total_descuento').val();
+                                                        var total_pagado = $('#total_pagado').val();
+                                                        var cambio = (parseFloat(total_pagado) - parseFloat(total_a_cancelar)) + parseFloat(total_descuento);
+                                                        $('#cambio').val(cambio);
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">Cambio</label>
+                                                <input type="text" class="form-control" id="cambio" placeholder="$0.00" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+-->
