@@ -6,7 +6,6 @@ include('../app/controllers/almacen/listado_de_productos.php');
 include('../app/controllers/ventas/listado_de_ventas.php');
 include('../app/controllers/clientes/listado_clientes.php');
 
-/* C:\xampp\htdocs\www.sistemadeventas.com\app\controllers\clientes\listado_clientes.php */
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -15,7 +14,7 @@ include('../app/controllers/clientes/listado_clientes.php');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">REGISTRO DE UNA NUEVA VENTA</h1>
+                    <h1 class="m-0">REGISTRO NUEVA VENTA</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -82,6 +81,7 @@ include('../app/controllers/clientes/listado_clientes.php');
                                                             <th>Código</th>
                                                             <th>Selec.</th>
                                                             <th>Imagen</th>
+                                                            <th>Stock</th>
                                                             <th>Nombre</th>
                                                             <th>P.V.P</th>
 
@@ -122,6 +122,7 @@ include('../app/controllers/clientes/listado_clientes.php');
                                                                     </script>
                                                                 </td>
                                                                 <td><img src="<?php echo $URL . '/almacen/img_productos/' . $productos_dato['imagen'] ?>" width="50px" alt=""></td>
+                                                                <td><?php echo $productos_dato['stock'] ?></td>
                                                                 <td><?php echo $productos_dato['nombre'] ?></td>
                                                                 <td><?php echo "$ " . $productos_dato['precio_venta'] ?></td>
 
@@ -187,7 +188,6 @@ include('../app/controllers/clientes/listado_clientes.php');
                                                                 $('#respuesta_carrito').html(datos);
                                                             });
 
-                                                            //$('#modal-buscar_producto').modal('toggle');
                                                         }
 
                                                     });
@@ -223,10 +223,10 @@ include('../app/controllers/clientes/listado_clientes.php');
                                         $cantidad_total = 0;
                                         $precio_unitario_total = 0;
                                         $precio_total = 0;
-                                        $nro_venta = $contador_de_carrito + 1;
+                                        $nro_venta = $cont_ventas + 1;
 
 
-                                        $sql_carrito = "SELECT *, pro.nombre AS nombre_producto, pro.descripcion AS descripcion, pro.precio_venta AS precio_venta
+                                        $sql_carrito = "SELECT *, pro.nombre AS nombre_producto, pro.descripcion AS descripcion, pro.precio_venta AS precio_venta, pro.stock AS stock, pro.id_producto AS id_producto
                                                         FROM tb_carrito AS carr INNER JOIN tb_almacen AS pro ON carr.id_producto=pro.id_producto 
                                                         WHERE nro_venta= '$nro_venta' ORDER BY id_carrito ASC";
 
@@ -243,10 +243,16 @@ include('../app/controllers/clientes/listado_clientes.php');
                                         ?>
                                             <tr>
                                                 <?php  ?>
-                                                <td><?php echo $contador_de_carrito ?></td>
+                                                <td>
+                                                    <?php echo $contador_de_carrito ?>
+                                                    <input type="text" value="<?php echo $carrito_dato['id_producto'] ?>" id="id_producto<?php echo $contador_de_carrito ?>" hidden>
+                                                </td>
                                                 <td><?php echo $carrito_dato['nombre_producto'] ?></td>
                                                 <td><?php echo $carrito_dato['descripcion']  ?></td>
-                                                <td><?php echo $carrito_dato['cantidad'] ?></td>
+                                                <td>
+                                                    <span id="cantidad_carrito<?php echo $contador_de_carrito ?>"><?php echo $carrito_dato['cantidad'] ?></span>
+                                                    <input type="text" value="<?php echo $carrito_dato['stock'] ?>" id="stock_de_inventario<?php echo $contador_de_carrito ?>" hidden>
+                                                </td>
                                                 <td>$<?php echo $carrito_dato['precio_venta'] ?></td>
                                                 <td>$<?php
                                                         $cantidad = floatval($carrito_dato['cantidad']);
@@ -292,9 +298,15 @@ include('../app/controllers/clientes/listado_clientes.php');
                                 <div class="card-header">
                                     <h3 class="card-title"><i class="fa fa-user-check"></i> Datos del cliente </h3>
 
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
+                                    <!-- <div class="card-tools">
+                                        <button type="button" class="btn btn-primary" data-card-widget="collapse">
+                                            <i class="fas fa-plus"></i> Agregar cliente
+                                        </button>
+                                    </div> -->
+                                    <div class="" style="display: flex; text-align: right; float: right;">
+                                        <div class="" style="width: 20px;"></div>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-agregar_cliente">
+                                            <i class="fas fa-user-plus"></i> Agregar cliente
                                         </button>
                                     </div>
                                     <!-- /.card-tools -->
@@ -305,7 +317,7 @@ include('../app/controllers/clientes/listado_clientes.php');
 
                                         <div class="" style="width: 20px;"></div>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-buscar_cliente">
-                                            <i class="fas fa-plus"></i> Buscar cliente
+                                            <i class="fas fa-search"></i> Buscar cliente
                                         </button>
                                     </div>
                                     <div id="modal-buscar_cliente" class="modal fade" role="dialog">
@@ -313,6 +325,13 @@ include('../app/controllers/clientes/listado_clientes.php');
                                             <div class="modal-content">
                                                 <div class="modal-header bg-primary">
                                                     <h4 class="modal-title">Busqueda de Cliente</h4>
+
+                                                    <div class="" style="display: flex; text-align: right; float: right;">
+                                                        <div class="" style="width: 20px;"></div>
+                                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-agregar_cliente">
+                                                            <i class="fas fa-user-plus"></i> Agregar cliente
+                                                        </button>
+                                                    </div>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -370,8 +389,6 @@ include('../app/controllers/clientes/listado_clientes.php');
                                                                                     var email_cliente = '<?php echo $clientes_dato['email_cliente'] ?>';
                                                                                     $('#email_cliente').val(email_cliente);
 
-
-                                                                                    //alert(nombre_cliente);
                                                                                     $('#modal-buscar_cliente').modal('toggle');
                                                                                 });
                                                                             </script>
@@ -523,15 +540,73 @@ include('../app/controllers/clientes/listado_clientes.php');
                                         <div class="col-md-4"></div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <button type="button" id="btn_guardar_venta" class="btn btn-primary btn-block">Guardar venta</button>
+                                                <button type="button" id="btn_guardar_venta" class="btn btn-primary btn-block"> <i class="fa fa-save"></i> Guardar venta</button>
+                                                <div class="" id="respuesta_registro_venta"></div>
+
                                                 <script>
                                                     $('#btn_guardar_venta').click(function() {
+
                                                         var nro_venta = '<?php echo $cont_ventas + 1 ?>';
                                                         var id_cliente = $('#id_cliente').val();
                                                         var total_a_cancelar_final = $('#total_a_cancelar_final').val();
 
+                                                        if (id_cliente == "") {
+                                                            alert("Debe seleccionar un cliente");
+                                                        } else if (total_a_cancelar_final == "") {
+                                                            alert("No existe una cantidad a cancelar");
+                                                        } else {
+
+                                                            actualizar_stock();
+                                                            guardar_venta();
+
+                                                        }
+
+
+
+                                                        function actualizar_stock() {
+                                                            var i = 1;
+                                                            var n = '<?php echo $contador_de_carrito ?>';
+
+                                                            for (i = 1; i <= n; i++) {
+
+                                                                var a = '#stock_de_inventario' + i;
+                                                                var stock_de_inventario = $(a).val();
+
+                                                                var b = '#cantidad_carrito' + i
+                                                                var cantidad_carrito = $(b).html();
+
+                                                                var c = '#id_producto' + i
+                                                                var id_producto = $(c).val();
+
+                                                                var stock_calculado = parseFloat(stock_de_inventario - cantidad_carrito);
+
+                                                                //alert(stock_de_inventario + ' - ' + cantidad_carrito + '=' + stock_calculado + ' ---- ' + id_producto);
+
+                                                                var url2 = "../app/controllers/ventas/actualizar_stock.php";
+                                                                $.get(url2, {
+                                                                    id_producto: id_producto,
+                                                                    stock_calculado: stock_calculado,
+
+                                                                }, function(datos) {
+                                                                    /* $('#respuesta_registro_venta').html(datos); */
+                                                                });
+                                                            }
+                                                        }
+
+                                                        function guardar_venta() {
+                                                            var url = "../app/controllers/ventas/registro_de_ventas.php";
+                                                            $.get(url, {
+                                                                nro_venta: nro_venta,
+                                                                id_cliente: id_cliente,
+                                                                total_a_cancelar_final: total_a_cancelar_final
+
+                                                            }, function(datos) {
+                                                                $('#respuesta_registro_venta').html(datos);
+                                                            });
+                                                        }
                                                     });
                                                 </script>
+
                                             </div>
                                         </div>
                                         <div class="col-md-4"></div>
@@ -631,3 +706,50 @@ include('../app/controllers/clientes/listado_clientes.php');
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>
+
+<!-- modal para agregar clientes -->
+<div id="modal-agregar_cliente" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h4 class="modal-title">Nuevo Cliente</h4>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="../app/controllers/clientes/guardar_clientes.php" method="post">
+                    <div class="form-group">
+                        <label for="">Cédula o RUC del cliente</label>
+                        <input type="number" name="nit_ci_cliente" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nombre del cliente</label>
+                        <input type="text" name="nombre_cliente" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Dirección del cliente</label>
+                        <input type="text" name="direccion_cliente" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Teléfono del cliente</label>
+                        <input type="number" name="celular_cliente" class="form-control">
+                    </div>
+                    <div class="form-group">
+
+                        <label for="">Email del cliente</label>
+                        <input type="email" name="email_cliente" class="form-control">
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-block btn-warning">
+                            <i class="fa fa-save"></i> Guardar cliente
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
